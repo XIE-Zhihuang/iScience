@@ -1,0 +1,512 @@
+install_github("vqv/ggbiplot")
+library(vegan)
+library(usethis)
+install.packages('devtools')
+install.packages("devtools")
+library(devtools)
+library(usethis)
+library(devtools)
+library(plspm)
+library(ggplot2)
+library(plspm)
+library(vegan)
+library(ggrepel)
+setwd("E:/plspm")
+aa=read.csv("env.csv",header=T,row.names = 1)
+View(aa)
+View(aa)
+#如果数据数值倍数过大，可以考虑标准化
+df=scale(aa,center=TRUE,scale=T)
+#设置6个潜变量进行路径分析
+quality<- c(0,0,0,0,0,0)
+funtiongenus<- c(1,0,0,0,0,0)
+labialC<- c(1,1,0,0,0,0)
+labial15N<- c(1,1,1,0,0,0)
+Nloss<-c(1,1,1,0,0,0)
+plant<-c(1,1,1,0,0,0)
+fix_path <- rbind(quality,funtiongenus,labialC,labial15N,Nloss,plant)
+#根据df选择对应的观察变量
+fix_blocks = list(c(18,19,23),c(8,9,11),c(1,2,4,22),c(12,14),16,17)
+#设置指定的关联，数值根据向量的行数修改，这个为6行
+fix_modes = rep("A",6)
+#进行plspm分析
+fix_pls = plspm(df, fix_path, fix_blocks, modes = fix_modes,boot.val = TRUE)
+#将方程可视化
+innerplot(fix_pls, colpos = 'red', colneg = 'blue', show.values = TRUE, lcol = 'gray20', box.lwd = 0)
+aa=read.csv("env2.csv",header=T,row.names = 1)
+df=aa
+#设置6个潜变量进行路径分析
+quality<- c(0,0,0,0,0,0)
+funtiongenus<- c(1,0,0,0,0,0)
+labialC<- c(1,1,0,0,0,0)
+labial15N<- c(1,1,1,0,0,0)
+Nloss<-c(1,1,1,0,0,0)
+plant<-c(1,1,1,0,0,0)
+fix_path <- rbind(quality,funtiongenus,labialC,labial15N,Nloss,plant)
+#根据df选择对应的观察变量
+fix_blocks = list(c(18,19,23),c(8,9,11),c(1,2,4,22),c(12,14),16,17)
+#设置指定的关联，数值根据向量的行数修改，这个为6行
+fix_modes = rep("A",6)
+#进行plspm分析
+fix_pls = plspm(df, fix_path, fix_blocks, modes = fix_modes,boot.val = TRUE)
+#将方程可视化
+innerplot(fix_pls, colpos = 'red', colneg = 'blue', show.values = TRUE, lcol = 'gray20', box.lwd = 0)
+#设置6个潜变量进行路径分析
+quality<- c(0,0,0,0,0,0,0)
+funtiongenus<- c(1,0,0,0,0,0,0)
+labialC<- c(1,1,0,0,0,0,0)
+respiration<- c(1,1,1,0,0,0,0)
+labial15N<- c(1,1,1,1,0,0,0)
+Nloss<-c(1,1,1,1,0,0,0)
+plant<-c(1,1,1,1,0,0,0)
+fix_path <- rbind(quality,funtiongenus,labialC,respiration,labial15N,Nloss,plant)
+#根据df选择对应的观察变量
+fix_blocks = list(c(18,19,23),c(8,9,11),c(1,2,4),6,c(12,14),16,17)
+#设置指定的关联，数值根据向量的行数修改，这个为6行
+fix_modes = rep("A",7)
+#进行plspm分析
+fix_pls = plspm(df, fix_path, fix_blocks, modes = fix_modes,boot.val = TRUE)
+#将方程可视化
+innerplot(fix_pls, colpos = 'red', colneg = 'blue', show.values = TRUE, lcol = 'gray20', box.lwd = 0)
+aa=read.csv("env2.csv",header=T,row.names = 1)
+df=aa
+#设置6个潜变量进行路径分析
+quality<- c(0,0,0,0,0,0,0)
+funtiongenus<- c(1,0,0,0,0,0,0)
+labialC<- c(1,1,0,0,0,0,0)
+respiration<- c(1,1,1,0,0,0,0)
+labial15N<- c(1,1,1,1,0,0,0)
+Nloss<-c(1,1,1,1,0,0,0)
+plant<-c(1,1,1,1,0,0,0)
+fix_path <- rbind(quality,funtiongenus,labialC,respiration,labial15N,Nloss,plant)
+#根据df选择对应的观察变量
+fix_blocks = list(c(18,19,23),c(8,9,11),c(1,2,4),6,c(12,14),16,17)
+#设置指定的关联，数值根据向量的行数修改，这个为6行
+fix_modes = rep("A",7)
+#进行plspm分析
+fix_pls = plspm(df, fix_path, fix_blocks, modes = fix_modes,boot.val = TRUE)
+View(aa)
+aa=read.csv("env3.csv",header=T,row.names = 1)
+df=aa
+#设置6个潜变量进行路径分析
+quality<- c(0,0,0,0,0,0,0)
+funtiongenus<- c(1,0,0,0,0,0,0)
+labialC<- c(1,1,0,0,0,0,0)
+respiration<- c(1,1,1,0,0,0,0)
+labial15N<- c(1,1,1,1,0,0,0)
+Nloss<-c(1,1,1,1,0,0,0)
+plant<-c(1,1,1,1,0,0,0)
+fix_path <- rbind(quality,funtiongenus,labialC,respiration,labial15N,Nloss,plant)
+#根据df选择对应的观察变量
+fix_blocks = list(c(18,19,23),c(8,9,11),c(1,2,4),6,c(12,14),16,17)
+#设置指定的关联，数值根据向量的行数修改，这个为6行
+fix_modes = rep("A",7)
+#进行plspm分析
+fix_pls = plspm(df, fix_path, fix_blocks, modes = fix_modes,boot.val = TRUE)
+#将方程可视化
+innerplot(fix_pls, colpos = 'red', colneg = 'blue', show.values = TRUE, lcol = 'gray20', box.lwd = 0)
+#根据df选择对应的观察变量
+fix_blocks = list(c(18,19,23),c(8,9,11),c(1,2,4),c(6,7),c(12,14),16,17)
+#设置指定的关联，数值根据向量的行数修改，这个为6行
+fix_modes = rep("A",7)
+#进行plspm分析
+fix_pls = plspm(df, fix_path, fix_blocks, modes = fix_modes,boot.val = TRUE)
+#将方程可视化
+innerplot(fix_pls, colpos = 'red', colneg = 'blue', show.values = TRUE, lcol = 'gray20', box.lwd = 0)
+#根据df选择对应的观察变量
+fix_blocks = list(c(18,19,23),c(8,9,11),c(1,2,4),c(7),c(12,14),16,17)
+#设置指定的关联，数值根据向量的行数修改，这个为6行
+fix_modes = rep("A",7)
+#进行plspm分析
+fix_pls = plspm(df, fix_path, fix_blocks, modes = fix_modes,boot.val = TRUE)
+#将方程可视化
+innerplot(fix_pls, colpos = 'red', colneg = 'blue', show.values = TRUE, lcol = 'gray20', box.lwd = 0)
+#根据df选择对应的观察变量
+fix_blocks = list(c(19),c(8,9,11),c(1,2,4),c(6),c(12,14,20),16,17)
+#设置指定的关联，数值根据向量的行数修改，这个为6行
+fix_modes = rep("A",7)
+#进行plspm分析
+fix_pls = plspm(df, fix_path, fix_blocks, modes = fix_modes,boot.val = TRUE)
+#将方程可视化
+innerplot(fix_pls, colpos = 'red', colneg = 'blue', show.values = TRUE, lcol = 'gray20', box.lwd = 0)
+aa=read.csv("env.csv",header=T,row.names = 1)
+#设置6个潜变量进行路径分析
+quality<- c(0,0,0,0,0,0,0)
+funtiongenus<- c(1,0,0,0,0,0,0)
+labialC<- c(1,1,0,0,0,0,0)
+respiration<- c(1,1,1,0,0,0,0)
+labial15N<- c(1,1,1,1,0,0,0)
+Nloss<-c(1,1,1,1,0,0,0)
+plant<-c(1,1,1,1,0,0,0)
+fix_path <- rbind(quality,funtiongenus,labialC,respiration,labial15N,Nloss,plant)
+aa=read.csv("env.csv",header=T,row.names = 1)
+#如果数据数值倍数过大，可以考虑标准化
+df=scale(aa,center=TRUE,scale=T)
+#设置6个潜变量进行路径分析
+quality<- c(0,0,0,0,0,0,0)
+funtiongenus<- c(1,0,0,0,0,0,0)
+labialC<- c(1,1,0,0,0,0,0)
+respiration<- c(1,1,1,0,0,0,0)
+labial15N<- c(1,1,1,1,0,0,0)
+Nloss<-c(1,1,1,1,0,0,0)
+plant<-c(1,1,1,1,0,0,0)
+fix_path <- rbind(quality,funtiongenus,labialC,respiration,labial15N,Nloss,plant)
+View(df)
+#根据df选择对应的观察变量
+fix_blocks = list(c(18,19),c(8,9,11),c(1,2,4),c(6),c(12,14,24),16,17)
+#设置指定的关联，数值根据向量的行数修改，这个为6行
+fix_modes = rep("A",7)
+#进行plspm分析
+fix_pls = plspm(df, fix_path, fix_blocks, modes = fix_modes,boot.val = TRUE)
+#将方程可视化
+innerplot(fix_pls, colpos = 'red', colneg = 'blue', show.values = TRUE, lcol = 'gray20', box.lwd = 0)
+#根据df选择对应的观察变量
+fix_blocks = list(c(18),c(8,9,11),c(1,2,4),c(6),c(12,14,24),16,17)
+#设置指定的关联，数值根据向量的行数修改，这个为6行
+fix_modes = rep("A",7)
+#进行plspm分析
+fix_pls = plspm(df, fix_path, fix_blocks, modes = fix_modes,boot.val = TRUE)
+#将方程可视化
+innerplot(fix_pls, colpos = 'red', colneg = 'blue', show.values = TRUE, lcol = 'gray20', box.lwd = 0)
+#根据df选择对应的观察变量
+fix_blocks = list(c(18),c(8,9,11),c(1,2,4),c(6),c(15,24),16,17)
+#设置指定的关联，数值根据向量的行数修改，这个为6行
+fix_modes = rep("A",7)
+#进行plspm分析
+fix_pls = plspm(df, fix_path, fix_blocks, modes = fix_modes,boot.val = TRUE)
+#将方程可视化
+innerplot(fix_pls, colpos = 'red', colneg = 'blue', show.values = TRUE, lcol = 'gray20', box.lwd = 0)
+#根据df选择对应的观察变量
+fix_blocks = list(c(18,19,23),c(8,9,11),c(1,2,4),c(6),c(15,24),16,17)
+#设置指定的关联，数值根据向量的行数修改，这个为6行
+fix_modes = rep("A",7)
+#进行plspm分析
+fix_pls = plspm(df, fix_path, fix_blocks, modes = fix_modes,boot.val = TRUE)
+#将方程可视化
+innerplot(fix_pls, colpos = 'red', colneg = 'blue', show.values = TRUE, lcol = 'gray20', box.lwd = 0)
+aa=read.csv("env2.csv",header=T,row.names = 1)
+df=aa
+#设置6个潜变量进行路径分析
+quality<- c(0,0,0,0,0,0,0)
+funtiongenus<- c(1,0,0,0,0,0,0)
+labialC<- c(1,1,0,0,0,0,0)
+respiration<- c(1,1,1,0,0,0,0)
+labial15N<- c(1,1,1,1,0,0,0)
+Nloss<-c(1,1,1,1,0,0,0)
+plant<-c(1,1,1,1,0,0,0)
+fix_path <- rbind(quality,funtiongenus,labialC,respiration,labial15N,Nloss,plant)
+#根据df选择对应的观察变量
+fix_blocks = list(c(18,19,23),c(8,9,11),c(1,2,4),c(6),c(15,24),16,17)
+#设置指定的关联，数值根据向量的行数修改，这个为6行
+fix_modes = rep("A",7)
+#进行plspm分析
+fix_pls = plspm(df, fix_path, fix_blocks, modes = fix_modes,boot.val = TRUE)
+#将方程可视化
+innerplot(fix_pls, colpos = 'red', colneg = 'blue', show.values = TRUE, lcol = 'gray20', box.lwd = 0)
+#设置6个潜变量进行路径分析
+quality<- c(0,0,0,0,0,0)
+funtiongenus<- c(1,0,0,0,0,0)
+labialC<- c(1,1,0,0,0,0)
+labial15N<- c(1,1,1,0,0,0)
+Nloss<-c(1,1,1,0,0,0)
+plant<-c(1,1,1,0,0,0)
+fix_path <- rbind(quality,funtiongenus,labialC,labial15N,Nloss,plant)
+#根据df选择对应的观察变量
+fix_blocks = list(c(18,19,23),c(8,9,11),c(1,2,4),c(15,24),16,17)
+#设置指定的关联，数值根据向量的行数修改，这个为6行
+fix_modes = rep("A",6)
+#进行plspm分析
+fix_pls = plspm(df, fix_path, fix_blocks, modes = fix_modes,boot.val = TRUE)
+#将方程可视化
+innerplot(fix_pls, colpos = 'red', colneg = 'blue', show.values = TRUE, lcol = 'gray20', box.lwd = 0)
+#根据df选择对应的观察变量
+fix_blocks = list(c(18,19,23),c(8,9,11),c(1,2,4,22),c(15,24),16,17)
+#设置指定的关联，数值根据向量的行数修改，这个为6行
+fix_modes = rep("A",6)
+#进行plspm分析
+fix_pls = plspm(df, fix_path, fix_blocks, modes = fix_modes,boot.val = TRUE)
+#将方程可视化
+innerplot(fix_pls, colpos = 'red', colneg = 'blue', show.values = TRUE, lcol = 'gray20', box.lwd = 0)
+#根据df选择对应的观察变量
+fix_blocks = list(c(18,19,23),c(8,9,11),c(1,2,4),c(15,24),16,17)
+#设置指定的关联，数值根据向量的行数修改，这个为6行
+fix_modes = rep("A",6)
+#进行plspm分析
+fix_pls = plspm(df, fix_path, fix_blocks, modes = fix_modes,boot.val = TRUE)
+#将方程可视化
+innerplot(fix_pls, colpos = 'red', colneg = 'blue', show.values = TRUE, lcol = 'gray20', box.lwd = 0)
+summary(fix_pls)
+aa=read.csv("env2.csv",header=T,row.names = 1)
+df=aa
+#设置6个潜变量进行路径分析
+quality<- c(0,0,0,0,0,0,0)
+funtiongenus<- c(1,0,0,0,0,0,0)
+labialC<- c(1,1,0,0,0,0,0)
+respiration<- c(1,1,1,0,0,0,0)
+labial15N<- c(1,1,1,1,0,0,0)
+Nloss<-c(1,1,1,1,0,0,0)
+plant<-c(1,1,1,1,0,0,0)
+fix_path <- rbind(quality,funtiongenus,labialC,respiration,labial15N,Nloss,plant)
+#根据df选择对应的观察变量
+fix_blocks = list(c(18,19,23),c(8,9,11),c(1,2,4),c(6),c(15,24),16,17)
+#设置指定的关联，数值根据向量的行数修改，这个为6行
+fix_modes = rep("A",7)
+#进行plspm分析
+fix_pls = plspm(df, fix_path, fix_blocks, modes = fix_modes,boot.val = TRUE)
+#将方程可视化
+innerplot(fix_pls, colpos = 'red', colneg = 'blue', show.values = TRUE, lcol = 'gray20', box.lwd = 0)
+#根据df选择对应的观察变量
+fix_blocks = list(c(18,19,23),c(8,9,11),c(1,2,4),c(6,7),c(15,24),16,17)
+#设置指定的关联，数值根据向量的行数修改，这个为6行
+fix_modes = rep("A",7)
+#进行plspm分析
+fix_pls = plspm(df, fix_path, fix_blocks, modes = fix_modes,boot.val = TRUE)
+#将方程可视化
+innerplot(fix_pls, colpos = 'red', colneg = 'blue', show.values = TRUE, lcol = 'gray20', box.lwd = 0)
+#根据df选择对应的观察变量
+fix_blocks = list(c(18,19,23),c(8,9,11),c(1,4),c(2,6,7),c(15,24),16,17)
+#设置指定的关联，数值根据向量的行数修改，这个为6行
+fix_modes = rep("A",7)
+#进行plspm分析
+fix_pls = plspm(df, fix_path, fix_blocks, modes = fix_modes,boot.val = TRUE)
+#将方程可视化
+innerplot(fix_pls, colpos = 'red', colneg = 'blue', show.values = TRUE, lcol = 'gray20', box.lwd = 0)
+#根据df选择对应的观察变量
+fix_blocks = list(c(18,19,23),c(8,9,11),c(1,2,4),c(6,7),c(15,24),16,17)
+#设置指定的关联，数值根据向量的行数修改，这个为6行
+fix_modes = rep("A",7)
+#进行plspm分析
+fix_pls = plspm(df, fix_path, fix_blocks, modes = fix_modes,boot.val = TRUE)
+#将方程可视化
+innerplot(fix_pls, colpos = 'red', colneg = 'blue', show.values = TRUE, lcol = 'gray20', box.lwd = 0)
+#根据df选择对应的观察变量
+fix_blocks = list(c(18,19,23),c(8,9,11),c(1,2,4),c(7),c(15,24),16,17)
+#设置指定的关联，数值根据向量的行数修改，这个为6行
+fix_modes = rep("A",7)
+#进行plspm分析
+fix_pls = plspm(df, fix_path, fix_blocks, modes = fix_modes,boot.val = TRUE)
+#将方程可视化
+innerplot(fix_pls, colpos = 'red', colneg = 'blue', show.values = TRUE, lcol = 'gray20', box.lwd = 0)
+aa=read.csv("env.csv",header=T,row.names = 1)
+#如果数据数值倍数过大，可以考虑标准化
+df=scale(aa,center=TRUE,scale=T)
+#设置6个潜变量进行路径分析
+quality<- c(0,0,0,0,0,0,0)
+funtiongenus<- c(1,0,0,0,0,0,0)
+labialC<- c(1,1,0,0,0,0,0)
+respiration<- c(1,1,1,0,0,0,0)
+labial15N<- c(1,1,1,1,0,0,0)
+Nloss<-c(1,1,1,1,0,0,0)
+plant<-c(1,1,1,1,0,0,0)
+fix_path <- rbind(quality,funtiongenus,labialC,respiration,labial15N,Nloss,plant)
+#根据df选择对应的观察变量
+fix_blocks = list(c(18,19,23),c(8,9,11),c(1,2,4),c(7),c(15,24),16,17)
+#设置指定的关联，数值根据向量的行数修改，这个为6行
+fix_modes = rep("A",7)
+#进行plspm分析
+fix_pls = plspm(df, fix_path, fix_blocks, modes = fix_modes,boot.val = TRUE)
+#将方程可视化
+innerplot(fix_pls, colpos = 'red', colneg = 'blue', show.values = TRUE, lcol = 'gray20', box.lwd = 0)
+#如果数据数值倍数过大，可以考虑标准化
+df=scale(aa,center=TRUE,scale=F)
+#设置6个潜变量进行路径分析
+quality<- c(0,0,0,0,0,0,0)
+funtiongenus<- c(1,0,0,0,0,0,0)
+labialC<- c(1,1,0,0,0,0,0)
+respiration<- c(1,1,1,0,0,0,0)
+labial15N<- c(1,1,1,1,0,0,0)
+Nloss<-c(1,1,1,1,0,0,0)
+plant<-c(1,1,1,1,0,0,0)
+fix_path <- rbind(quality,funtiongenus,labialC,respiration,labial15N,Nloss,plant)
+#根据df选择对应的观察变量
+fix_blocks = list(c(18,19,23),c(8,9,11),c(1,2,4),c(7),c(15,24),16,17)
+#设置指定的关联，数值根据向量的行数修改，这个为6行
+fix_modes = rep("A",7)
+#进行plspm分析
+fix_pls = plspm(df, fix_path, fix_blocks, modes = fix_modes,boot.val = TRUE)
+#将方程可视化
+innerplot(fix_pls, colpos = 'red', colneg = 'blue', show.values = TRUE, lcol = 'gray20', box.lwd = 0)
+#根据df选择对应的观察变量
+fix_blocks = list(c(18,19,23),c(8,9,11),c(1,2,4,5),c(7),c(15,24),16,17)
+#设置指定的关联，数值根据向量的行数修改，这个为6行
+fix_modes = rep("A",7)
+#进行plspm分析
+fix_pls = plspm(df, fix_path, fix_blocks, modes = fix_modes,boot.val = TRUE)
+#将方程可视化
+innerplot(fix_pls, colpos = 'red', colneg = 'blue', show.values = TRUE, lcol = 'gray20', box.lwd = 0)
+summary(fix_pls)
+#根据df选择对应的观察变量
+fix_blocks = list(c(18,19,23),c(8,9,11),c(1,2,4,22),c(7),c(15,24),16,17)
+#设置指定的关联，数值根据向量的行数修改，这个为6行
+fix_modes = rep("A",7)
+#进行plspm分析
+fix_pls = plspm(df, fix_path, fix_blocks, modes = fix_modes,boot.val = TRUE)
+#将方程可视化
+innerplot(fix_pls, colpos = 'red', colneg = 'blue', show.values = TRUE, lcol = 'gray20', box.lwd = 0)
+summary(fix_pls)
+#根据df选择对应的观察变量
+fix_blocks = list(c(18,19,23),c(8,9,11),c(1,2,4,22),c(6),c(15,24),16,17)
+#设置指定的关联，数值根据向量的行数修改，这个为6行
+fix_modes = rep("A",7)
+#进行plspm分析
+fix_pls = plspm(df, fix_path, fix_blocks, modes = fix_modes,boot.val = TRUE)
+#将方程可视化
+innerplot(fix_pls, colpos = 'red', colneg = 'blue', show.values = TRUE, lcol = 'gray20', box.lwd = 0)
+#根据df选择对应的观察变量
+fix_blocks = list(c(18,19,23),c(8,9,11),c(1,2,4,22),c(6,7),c(15,24),16,17)
+#设置指定的关联，数值根据向量的行数修改，这个为6行
+fix_modes = rep("A",7)
+#进行plspm分析
+fix_pls = plspm(df, fix_path, fix_blocks, modes = fix_modes,boot.val = TRUE)
+#将方程可视化
+innerplot(fix_pls, colpos = 'red', colneg = 'blue', show.values = TRUE, lcol = 'gray20', box.lwd = 0)
+#根据df选择对应的观察变量
+fix_blocks = list(c(18,19,23),c(8,9,11),c(1,2,4),c(6,7),c(15,24),16,17)
+#设置指定的关联，数值根据向量的行数修改，这个为6行
+fix_modes = rep("A",7)
+#进行plspm分析
+fix_pls = plspm(df, fix_path, fix_blocks, modes = fix_modes,boot.val = TRUE)
+#将方程可视化
+innerplot(fix_pls, colpos = 'red', colneg = 'blue', show.values = TRUE, lcol = 'gray20', box.lwd = 0)
+#根据df选择对应的观察变量
+fix_blocks = list(c(18,19,23),c(8,9,11),c(1,2,4),c(6,7),c(12,13,14,24),16,17)
+#设置指定的关联，数值根据向量的行数修改，这个为6行
+fix_modes = rep("A",7)
+#进行plspm分析
+fix_pls = plspm(df, fix_path, fix_blocks, modes = fix_modes,boot.val = TRUE)
+#将方程可视化
+innerplot(fix_pls, colpos = 'red', colneg = 'blue', show.values = TRUE, lcol = 'gray20', box.lwd = 0)
+summary(fix_pls)
+#根据df选择对应的观察变量
+fix_blocks = list(c(18,19,23),c(8,9,11),c(1,2,4),c(6,7),c(12,14,24),16,17)
+#设置指定的关联，数值根据向量的行数修改，这个为6行
+fix_modes = rep("A",7)
+#进行plspm分析
+fix_pls = plspm(df, fix_path, fix_blocks, modes = fix_modes,boot.val = TRUE)
+#将方程可视化
+innerplot(fix_pls, colpos = 'red', colneg = 'blue', show.values = TRUE, lcol = 'gray20', box.lwd = 0)
+#根据df选择对应的观察变量
+fix_blocks = list(c(18,19,23),c(8,9,11),c(1,2,4),c(6,7),c(15,24),16,17)
+#设置指定的关联，数值根据向量的行数修改，这个为6行
+fix_modes = rep("A",7)
+#进行plspm分析
+fix_pls = plspm(df, fix_path, fix_blocks, modes = fix_modes,boot.val = TRUE)
+#将方程可视化
+innerplot(fix_pls, colpos = 'red', colneg = 'blue', show.values = TRUE, lcol = 'gray20', box.lwd = 0)
+#根据df选择对应的观察变量
+fix_blocks = list(c(18,19,23),c(8,9,11),c(1,2,4),c(6),c(15,24),16,17)
+#设置指定的关联，数值根据向量的行数修改，这个为6行
+fix_modes = rep("A",7)
+#进行plspm分析
+fix_pls = plspm(df, fix_path, fix_blocks, modes = fix_modes,boot.val = TRUE)
+#将方程可视化
+innerplot(fix_pls, colpos = 'red', colneg = 'blue', show.values = TRUE, lcol = 'gray20', box.lwd = 0)
+#设置6个潜变量进行路径分析
+quality<- c(0,0,0,0,0,0)
+funtiongenus<- c(1,0,0,0,0,0)
+labialC<- c(1,1,0,0,0,0)
+labial15N<- c(1,1,1,0,0,0)
+Nloss<-c(1,1,1,0,0,0)
+plant<-c(1,1,1,0,0,0)
+fix_path <- rbind(quality,funtiongenus,labialC,labial15N,Nloss,plant)
+#根据df选择对应的观察变量
+fix_blocks = list(c(18,19,23),c(8,9,11),c(1,2,4),c(15,24),16,17)
+#设置指定的关联，数值根据向量的行数修改，这个为6行
+fix_modes = rep("A",6)
+#进行plspm分析
+fix_pls = plspm(df, fix_path, fix_blocks, modes = fix_modes,boot.val = TRUE)
+#将方程可视化
+innerplot(fix_pls, colpos = 'red', colneg = 'blue', show.values = TRUE, lcol = 'gray20', box.lwd = 0)
+#根据df选择对应的观察变量
+fix_blocks = list(c(18,19,23),c(8,9,11),c(1,2,4),c(12,14,24),16,17)
+#设置指定的关联，数值根据向量的行数修改，这个为6行
+fix_modes = rep("A",6)
+#进行plspm分析
+fix_pls = plspm(df, fix_path, fix_blocks, modes = fix_modes,boot.val = TRUE)
+#将方程可视化
+innerplot(fix_pls, colpos = 'red', colneg = 'blue', show.values = TRUE, lcol = 'gray20', box.lwd = 0)
+#根据df选择对应的观察变量
+fix_blocks = list(c(18,19,23),c(8,9,11),c(1,2,4),c(15,24),16,17)
+#设置指定的关联，数值根据向量的行数修改，这个为6行
+fix_modes = rep("A",6)
+#进行plspm分析
+fix_pls = plspm(df, fix_path, fix_blocks, modes = fix_modes,boot.val = TRUE)
+#将方程可视化
+innerplot(fix_pls, colpos = 'red', colneg = 'blue', show.values = TRUE, lcol = 'gray20', box.lwd = 0)
+aa=read.csv("env2.csv",header=T,row.names = 1)
+df=aa
+#设置6个潜变量进行路径分析
+quality<- c(0,0,0,0,0,0)
+funtiongenus<- c(1,0,0,0,0,0)
+labialC<- c(1,1,0,0,0,0)
+labial15N<- c(1,1,1,0,0,0)
+Nloss<-c(1,1,1,0,0,0)
+plant<-c(1,1,1,0,0,0)
+fix_path <- rbind(quality,funtiongenus,labialC,labial15N,Nloss,plant)
+#根据df选择对应的观察变量
+fix_blocks = list(c(18,19,23),c(8,9,11),c(1,2,4),c(15,24),16,17)
+#设置指定的关联，数值根据向量的行数修改，这个为6行
+fix_modes = rep("A",6)
+#进行plspm分析
+fix_pls = plspm(df, fix_path, fix_blocks, modes = fix_modes,boot.val = TRUE)
+#将方程可视化
+innerplot(fix_pls, colpos = 'red', colneg = 'blue', show.values = TRUE, lcol = 'gray20', box.lwd = 0)
+aa=read.csv("env.csv",header=T,row.names = 1)
+#如果数据数值倍数过大，可以考虑标准化
+df=scale(aa,center=TRUE,scale=F)
+#设置6个潜变量进行路径分析
+quality<- c(0,0,0,0,0,0)
+funtiongenus<- c(1,0,0,0,0,0)
+labialC<- c(1,1,0,0,0,0)
+labial15N<- c(1,1,1,0,0,0)
+Nloss<-c(1,1,1,0,0,0)
+plant<-c(1,1,1,0,0,0)
+fix_path <- rbind(quality,funtiongenus,labialC,labial15N,Nloss,plant)
+#根据df选择对应的观察变量
+fix_blocks = list(c(18,19,23),c(8,9,11),c(1,2,4),c(15,24),16,17)
+#设置指定的关联，数值根据向量的行数修改，这个为6行
+fix_modes = rep("A",6)
+#进行plspm分析
+fix_pls = plspm(df, fix_path, fix_blocks, modes = fix_modes,boot.val = TRUE)
+#将方程可视化
+innerplot(fix_pls, colpos = 'red', colneg = 'blue', show.values = TRUE, lcol = 'gray20', box.lwd = 0)
+aa=read.csv("env2.csv",header=T,row.names = 1)
+df=aa
+#设置6个潜变量进行路径分析
+quality<- c(0,0,0,0,0,0)
+funtiongenus<- c(1,0,0,0,0,0)
+labialC<- c(1,1,0,0,0,0)
+labial15N<- c(1,1,1,0,0,0)
+Nloss<-c(1,1,1,0,0,0)
+plant<-c(1,1,1,0,0,0)
+fix_path <- rbind(quality,funtiongenus,labialC,labial15N,Nloss,plant)
+#根据df选择对应的观察变量
+fix_blocks = list(c(18,19,23),c(8,9,11),c(1,2,4),c(15,24),16,17)
+#设置指定的关联，数值根据向量的行数修改，这个为6行
+fix_modes = rep("A",6)
+#进行plspm分析
+fix_pls = plspm(df, fix_path, fix_blocks, modes = fix_modes,boot.val = TRUE)
+#将方程可视化
+innerplot(fix_pls, colpos = 'red', colneg = 'blue', show.values = TRUE, lcol = 'gray20', box.lwd = 0)
+summary(fix_pls)
+aa=read.csv("env2.csv",header=T,row.names = 1)
+df=aa
+#设置6个潜变量进行路径分析
+quality<- c(0,0,0,0,0,0,0)
+funtiongenus<- c(1,0,0,0,0,0,0)
+labialC<- c(1,1,0,0,0,0,0)
+respiration<- c(1,1,1,0,0,0,0)
+labial15N<- c(1,1,1,1,0,0,0)
+Nloss<-c(1,1,1,1,0,0,0)
+plant<-c(1,1,1,1,0,0,0)
+fix_path <- rbind(quality,funtiongenus,labialC,respiration,labial15N,Nloss,plant)
+#根据df选择对应的观察变量
+fix_blocks = list(c(18,19,23),c(8,9,11),c(1,2,4),6,c(15,24),16,17)
+#设置指定的关联，数值根据向量的行数修改，这个为6行
+fix_modes = rep("A",7)
+#进行plspm分析
+fix_pls = plspm(df, fix_path, fix_blocks, modes = fix_modes,boot.val = TRUE)
+#将方程可视化
+innerplot(fix_pls, colpos = 'red', colneg = 'blue', show.values = TRUE, lcol = 'gray20', box.lwd = 0)
+#查看goodness of fit拟合指标
+fix_pls$gof
