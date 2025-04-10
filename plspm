@@ -1,1 +1,33 @@
-
+# 安装必要的包
+install.packages(c("ggplot2", "dendextend", "circlize", "RColorBrewer", "ggtree"))
+library(ggplot2)
+library(dendextend)
+library(circlize)
+library(RColorBrewer)
+library(ggtree)
+# 示例数据框
+data <- data.frame(
+  Sample = c("S1", "S2", "S3", "S4", "S5", "S6", "S7", "S8", "S9"),
+  Maize_residue = c(10, 15, 12, 8, 14, 16, 9, 11, 13),
+  Soybean_residue = c(8, 12, 10, 7, 11, 13, 6, 9, 10),
+  Chemical_fertilizer = c(12, 18, 15, 10, 17, 19, 11, 13, 14),
+  Type = c("Maize residue", "Soybean residue", "Chemical fertilizer", "Maize residue", "Soybean residue", "Chemical fertilizer", "Maize residue", "Soybean residue", "Chemical fertilizer")
+)
+data_matrix <- as.matrix(data[, 2:4])
+rownames(data_matrix) <- data$Sample
+dist_matrix <- dist(data_matrix)
+hc <- hclust(dist_matrix, method = "ward.D2")
+dend <- as.dendrogram(hc)
+circos.initialize(factors = unique(data$Type), xlim = c(0, max(data_matrix)))
+circos.trackPlotRegion(ylim = c(0, max(data_matrix)), panel.fun = function(x, y) {
+  xlim = get.cell.meta.data(c("xlim"))
+  circos.rect(xleft = xlim[1], xright = xlim[2], ybottom = 0, ytop = data_matrix[get.cell.meta.data("sector.index")], col = brewer.pal(9, "Set1")[data$Type], border = NA)
+})
+max_height <- max(hc$height)
+circos.track(ylim = c(0, max_height), panel.fun = function(x, y) {
+  circlize::circos.dendrogram(dend, max_height = max_height)
+}, track.height = 0.5, bg.border = NA)
+circos.trackPlotRegion(ylim = c(0, 10), panel.fun = function(x, y) {
+  circos.text(CELL_META$xcenter, CELL_META$cell.ylim[2] + mm_y(3), CELL_META$sector.index)
+}, track.height = 0.1, bg.border = NA)
+circos.clear()
