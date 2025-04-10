@@ -1,1 +1,1 @@
-# iScience
+This code is provided as a template for performing [PLS‐PM analysis and Hierarchical cluster analysis] and creating corresponding visualizations. It is designed to be flexible and adaptable to different datasets. However, it is important to note that this code is not a "plug-and-play" solution and requires customization based on your specific dataset and research objectives.
