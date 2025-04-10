@@ -16,7 +16,7 @@ data <- data.frame(
 data_matrix <- as.matrix(data[, 2:4])
 rownames(data_matrix) <- data$Sample
 dist_matrix <- dist(data_matrix)
-hc <- hclust(dist_matrix, method = "ward.D2")
+hc <- hclust(dist_matrix, method = "complete")
 dend <- as.dendrogram(hc)
 circos.initialize(factors = unique(data$Type), xlim = c(0, max(data_matrix)))
 circos.trackPlotRegion(ylim = c(0, max(data_matrix)), panel.fun = function(x, y) {
